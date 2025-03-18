@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PORTFOLIO COMPROG</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            transition: background 1s ease-in-out;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            background-color: #444;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <button id="redirectBtn">Go to my website?</button>
+    <script>
+        let clickCount = 0;
+        const button = document.getElementById("redirectBtn");
+        
+        button.addEventListener("click", function() {
+            if (clickCount === 0) {
+                button.textContent = "Are you sure?";
+                clickCount++;
+            } else if (clickCount === 1) {
+                button.textContent = "Redirecting in 5...";
+                clickCount++;
+                let count = 5;
+                let countdown = setInterval(() => {
+                    count--;
+                    if (count > 0) {
+                        button.textContent = `Redirecting in ${count}...`;
+                    } else {
+                        clearInterval(countdown);
+                        document.body.style.background = "#242424";
+                        setTimeout(() => {
+                            document.body.style.background = "	#e0be99";
+                            setTimeout(() => {
+                                window.location.href = "https://lovesjeb.github.io/EstellosoPortfolio/";
+                            }, 1000);
+                        }, 1000);
+                    }
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>
